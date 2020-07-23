@@ -7,7 +7,7 @@ public interface GradeDAO {
 
 	int insertGrade(Map<String,Object> grade);
 	int updateGrade(Map<String,Object> grade);
-	int deleteGrade(Map<String,Object> grade);
-	Map<String,Object> selectGrade(Map<String,Object> grade);
+	int deleteGrade(int gNo);
+	Map<String,Object> selectGrade(int gNo);
 	List<Map<String,Object>> selectGradeList(Map<String,Object> grade);
 }

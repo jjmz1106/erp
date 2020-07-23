@@ -15,15 +15,12 @@ public class Conn {
 	}
 	public static Connection open() {
 		try {
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1522/xe","c##test","test"); 
-			String sql = "select grd_no, grd_name, grd_desc from grade";
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			while(rs.next()) {
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe","c##test","test"); 
+			con.setAutoCommit(false);
+			return con;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return con;
+		return null;
 	}
 }
