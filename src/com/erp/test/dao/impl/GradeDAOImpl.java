@@ -92,11 +92,11 @@ public class GradeDAOImpl implements GradeDAO {
 			ps.setObject(1, grade.get("grd_no"));
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				Map<String,Object> g = new HashMap<>();
-				g.put("grd_no", rs.getInt("grd_no"));
-				g.put("grd_name", rs.getString("grd_name"));
-				g.put("grd_desc", rs.getString("grd_desc"));
-				return g;
+				Map<String,Object> map = new HashMap<>();
+				map.put("grd_no", rs.getInt("grd_no"));
+				map.put("grd_name", rs.getString("grd_name"));
+				map.put("grd_desc", rs.getString("grd_desc"));
+				return map;
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -118,11 +118,11 @@ public class GradeDAOImpl implements GradeDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				Map<String,Object> g = new HashMap<>();
-				g.put("grd_no", rs.getInt("grd_no"));
-				g.put("grd_name", rs.getString("grd_name"));
-				g.put("grd_desc", rs.getString("grd_desc"));
-				gradeList.add(g);
+				Map<String,Object> map = new HashMap<>();
+				map.put("grd_no", rs.getInt("grd_no"));
+				map.put("grd_name", rs.getString("grd_name"));
+				map.put("grd_desc", rs.getString("grd_desc"));
+				gradeList.add(map);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
