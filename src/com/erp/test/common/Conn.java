@@ -2,6 +2,8 @@ package com.erp.test.common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Conn {
@@ -15,7 +17,7 @@ public class Conn {
 	}
 	public static Connection open() {
 		try {
-			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe","c##test","test"); 
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1522/xe","c##test","test"); 
 			con.setAutoCommit(false);
 			return con;
 		} catch (SQLException e) {
@@ -23,4 +25,56 @@ public class Conn {
 		}
 		return null;
 	}
+	
+	   public static void close(ResultSet rs) {
+		      if(rs!=null) {
+		         
+		            try {
+		               rs.close();
+		            } catch (SQLException e) {
+		               // TODO Auto-generated catch block
+		               e.printStackTrace();
+		            }
+		         
+		         
+		      }
+		   }
+		   public static void close(Connection con) {
+		      if(con!=null) {   
+		            try {
+		               con.close();
+		            } catch (SQLException e) {
+		               // TODO Auto-generated catch block
+		               e.printStackTrace();
+		            }      
+		         
+		      }
+		   }
+		   public static void close(PreparedStatement ps) {
+		      if(ps!=null) {
+		         
+		            try {
+		               ps.close();
+		            } catch (SQLException e) {
+		               // TODO Auto-generated catch block
+		               e.printStackTrace();
+		            }
+		         
+		         
+		      }
+		   }
+		   public static void close(PreparedStatement ps,Connection con) {
+		      close(ps);
+		      close(con);
+		      
+		   
+		   }
+		   public static void close(ResultSet rs,PreparedStatement ps,Connection con) {
+		      close(rs);
+		      close(ps);
+		      close(con);   
+		   }
+		   
+		
+
 }

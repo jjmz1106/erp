@@ -4,20 +4,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>직급정보입력</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<form method="post" action="/grade/grade-insert">
-		<table border="1">
-			<tr>
-				<th>직급</th>
-				<td><input type="text" name="grd_no"></td>
-			</tr>
-			<tr>
-				<th>비고</th>
-				<td><input type="text" name="grd_desc"></td>
-			</tr>
-		</table>
-	</form>
+<form method="post" action="/grade/grade-insert" id="frm">
+	<table border="1">
+		<tr>
+			<th>직급</th>
+			<th><input type="text" name="grd_name" ></th>
+		</tr>
+		<tr>
+			<th>설명</th>
+			<th><input type="text" name="grd_desc" ></th>
+		</tr>
+		<tr>
+			<th colspan="2"><button>직급추가</button><button type="reset">초기화</button></th>
+		</tr>
+	</table>
+</form>
 </body>
 </html>

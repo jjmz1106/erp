@@ -14,15 +14,23 @@
 		<th>비고</th>
 	</tr>
 	<c:if test="${empty gradeList}">
-		<td colspan="3">내용이 없습니다.</td>
+		<tr>
+			<td colspan="3">내용이 없습니다.</td>
+		</tr>
 	</c:if>
 	<c:forEach items="${gradeList}" var="grade">
-		<tr>
+		<tr onclick="goView(${grade.grd_no})">
 			<td>${grade.grd_no}</td>
 			<td>${grade.grd_name}</td>
-			<td>${grade.grd_desc}</td>
+			<td>${grade.grd_desc}</td>			
 		</tr>
-	</c:forEach>
+	</c:forEach>	
 </table>
+<a href="/views/grade/grade-insert"><button>직급추가</button></a>
+<script>
+function goView(grd_no){
+	location.href='/grade/grade-view?grd_no=' + grd_no;
+}
+</script>
 </body>
 </html>

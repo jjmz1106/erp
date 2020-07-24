@@ -24,35 +24,42 @@ public class GradeServlet extends HttpServlet {
 			request.setAttribute("gradeList", gradeService.selectGradeList(null));
 			RequestDispatcher rd = request.getRequestDispatcher("/views/grade/grade-list");
 			rd.forward(request, response);
-			return;
-		}
-		if("/grade/grade-view".equals(uri)) {
-			int gNo = Integer.parseInt(request.getParameter("ged_no"));
-			request.setAttribute("grade", gradeService.selectGrade(gNo));
+		}else if("/grade/grade-view".equals(uri)) {
+			Map<String,Object> grade = new HashMap<>();
+			grade.put("grd_no", request.getParameter("grd_no"));
+			request.setAttribute("grade", gradeService.selectGrade(grade));
 			RequestDispatcher rd = request.getRequestDispatcher("/views/grade/grade-view");
 			rd.forward(request, response);
-			return;
 		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String uri = request.getRequestURI();
-		if("/grade/grade-insert".equals(uri)) {
-			String gName = request.getParameter("grd_name");
-			String gDesc = request.getParameter("grd_desc");
-			int gNo = Integer.parseInt(request.getParameter("grd_no"));
+		if("/grade/grade-update".equals(uri)) {
 			Map<String,Object> grade = new HashMap<>();
-			grade.put("grd_name",gName);
-			grade.put("grd_desc",gDesc);
-			grade.put("grd_no",gNo);
-			doProcess(response,gradeService.updateGrade(grade).toString());
-			return;
+			grade.put("grd_no", request.getParameter("grd_no"));
+			grade.put("grd_name", request.getParameter("grd_name"));
+			grade.put("grd_desc", request.getParameter("grd_desc"));
+			Map<String,Object> rMap = gradeService.updateGrade(grade);
+			rMap.put("url", "/grade/grade-list");
+			request.setAttribute("rMap",rMap);
+		}else if("/grade/grade-delete".equals(uri)) {
+			Map<String,Object> grade = new HashMap<>();
+			grade.put("grd_no", request.getParameter("grd_no"));
+			Map<String,Object> rMap = gradeService.deleteGrade(grade);
+			rMap.put("url", "/grade/grade-list");
+			request.setAttribute("rMap",rMap);
+		}else if("/grade/grade-insert".equals(uri)) {
+			Map<String,Object> grade = new HashMap<>();
+			grade.put("grd_name", request.getParameter("grd_name"));
+			grade.put("grd_desc", request.getParameter("grd_desc"));
+			Map<String,Object> rMap = gradeService.insertGrade(grade);
+			rMap.put("url", "/grade/grade-list");
+			request.setAttribute("rMap",rMap);
 		}
-	}
-	private void doProcess(HttpServletResponse response, String str) throws IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.println(str);
+		RequestDispatcher rd = request.getRequestDispatcher("/views/common/msg");
+		rd.forward(request, response);
 	}
 
 }
+

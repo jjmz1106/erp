@@ -12,49 +12,33 @@ public class GradeServiceImpl implements GradeService {
 	private GradeDAO gradeDAO = new GradeDAOImpl();
 	@Override
 	public Map<String, Object> insertGrade(Map<String, Object> grade) {
-		int result = gradeDAO.insertGrade(grade);
 		Map<String, Object> rMap = new HashMap<>();
-		rMap.put("msg", "직급등록 완료~");
-		if(result!=1) {
-			rMap.put("msg", "직급등록 오류!");
-		}
-		rMap.put("cnt", result);
+		rMap.put("msg", gradeDAO.insertGrade(grade)==1?"입력성공":"입력실패");
 		return rMap;
 	}
 
 	@Override
 	public Map<String, Object> updateGrade(Map<String, Object> grade) {
-		int result = gradeDAO.updateGrade(grade);
 		Map<String, Object> rMap = new HashMap<>();
-		rMap.put("msg", "직급수정 완료~");
-		if(result!=1) {
-			rMap.put("msg", "직급수정 오류!");
-		}
-		rMap.put("cnt", result);
+		rMap.put("msg", gradeDAO.updateGrade(grade)==1?"수정성공":"수정실패");
 		return rMap;
 	}
 
 	@Override
-	public Map<String, Object> deleteGrade(int gNo) {
-		int result = gradeDAO.deleteGrade(gNo);
+	public Map<String, Object> deleteGrade(Map<String, Object> grade) {
 		Map<String, Object> rMap = new HashMap<>();
-		rMap.put("msg", "직급삭제 완료~");
-		if(result!=1) {
-			rMap.put("msg", "직급삭제 오류!");
-		}
-		rMap.put("cnt", result);
+		rMap.put("msg", gradeDAO.deleteGrade(grade)==1?"삭제성공":"삭제실패");
 		return rMap;
 	}
 
 	@Override
-	public Map<String, Object> selectGrade(int gNo) {
-		return gradeDAO.selectGrade(gNo);
+	public Map<String, Object> selectGrade(Map<String, Object> grade) {
+		return gradeDAO.selectGrade(grade);
 	}
 
 	@Override
 	public List<Map<String, Object>> selectGradeList(Map<String, Object> grade) {
 		return gradeDAO.selectGradeList(grade);
 	}
-
 
 }
