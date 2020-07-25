@@ -33,8 +33,36 @@ public class EmployeeServlet extends HttpServlet {
 		
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+		String uri = request.getRequestURI();
+		if("/employee/employee-insert".equals(uri)) {
+			Map<String,Object> employee = new HashMap<>();
+			employee.put("emp_name", request.getParameter("emp_name"));
+			employee.put("emp_salary", request.getParameter("emp_salary"));
+			employee.put("grd_no", request.getParameter("grd_no"));
+			Map<String,Object> rMap = employeeService.insertEmployee(employee);
+			rMap.put("url", "/employee/employee-list");
+			request.setAttribute("rMap",rMap);
+		}else if("/employee/employee-delete".equals(uri)) {
+			Map<String,Object> employee = new HashMap<>();
+			employee.put("emp_no", request.getParameter("emp_no"));
+			Map<String,Object> rMap = employeeService.deleteEmployee(employee);
+			rMap.put("url", "/employee/employee-list");
+			request.setAttribute("rMap",rMap);
+		}else if("/employee/employee-update".equals(uri)) {
+			Map<String,Object> employee = new HashMap<>();
+			employee.put("emp_no", request.getParameter("emp_no"));
+			employee.put("emp_name", request.getParameter("emp_name"));
+			employee.put("emp_salary", request.getParameter("emp_salary"));
+			employee.put("grd_no", request.getParameter("grd_no"));
+			employee.put("emp_active", request.getParameter("emp_active"));
+			employee.put("emp_credat", request.getParameter("emp_credat"));
+			Map<String,Object> rMap = employeeService.updateEmployee(employee);
+			rMap.put("url", "/employee/employee-list");
+			request.setAttribute("rMap",rMap);
+		}
+		RequestDispatcher rd = request.getRequestDispatcher("/views/common/msg");
+		rd.forward(request, response);
 	}
 
 }

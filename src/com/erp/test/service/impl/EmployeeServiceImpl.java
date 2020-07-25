@@ -19,14 +19,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Map<String, Object> updateEmployee(Map<String, Object> employee) {
-		// TODO Auto-generated method stub
-		return null;
+		Map<String,Object> rMap = new HashMap<>();
+		rMap.put("msg", employeeDAO.updateEmployee(employee)==1?"수정성공":"수정실패");
+		return rMap;
 	}
 
 	@Override
 	public Map<String, Object> deleteEmployee(Map<String, Object> employee) {
-		// TODO Auto-generated method stub
-		return null;
+		Map<String,Object> rMap = new HashMap<>();
+		rMap.put("msg", employeeDAO.deleteEmployee(employee)==1?"삭제성공":"삭제실패");
+		return rMap;
 	}
 
 	@Override

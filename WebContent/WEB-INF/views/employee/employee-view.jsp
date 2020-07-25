@@ -11,12 +11,20 @@
 	<input type="hidden" name="emp_no" value="${employee.emp_no}">
 	<table border="1">
 		<tr>
-			<th>서원번호</th>
+			<th>사원번호</th>
 			<th>${employee.emp_no}</th>
 		</tr>
 		<tr>
 			<th>이름</th>
 			<th><input type="text" name="emp_name" value="${employee.emp_name}"></th>
+		</tr>
+		<tr>
+			<th>급여</th>
+			<th><input type="text" name="emp_salary" value="${employee.emp_salary}"></th>
+		</tr>
+		<tr>
+			<th>직급</th>
+			<th><input type="text" name="grd_no" value="${employee.grd_no}"></th>
 		</tr>
 		<tr>
 			<th>입사일</th>

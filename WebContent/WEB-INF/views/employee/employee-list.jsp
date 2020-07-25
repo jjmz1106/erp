@@ -12,7 +12,6 @@
 		<th>서원번호</th>
 		<th>이름</th>
 		<th>입사일</th>
-		<th>급여</th>
 		<th>직급</th>	
 	</tr>
 	<c:if test="${empty employeeList}">
@@ -25,7 +24,6 @@
 			<td>${employee.emp_no}</td>
 			<td>${employee.emp_name}</td>
 			<td>${employee.emp_credat}</td>
-			<td>${employee.emp_salary}</td>
 			<td>${employee.grd_no}</td>
 		</tr>
 	</c:forEach>
