@@ -34,5 +34,13 @@
 			<th colspan="2"><button>수정</button><button type="button" onclick="goDelete()">삭제</button></th>
 		</tr>
 	</table>
+</form>
+<script>
+function goDelete(){
+	var formObj = document.querySelector('#frm');
+	formObj.action = '/employee/employee-delete';
+	formObj.submit();
+}
+</script>
 </body>
 </html>

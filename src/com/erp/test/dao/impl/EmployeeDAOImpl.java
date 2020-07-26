@@ -44,14 +44,13 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		int result = 0;
 		try {
 			con = Conn.open();
-			String sql = "update employee set emp_name=?, emp_salary=?, emp_active=?, grd_no=?, emp_credat=? where emp_no=?";
+			String sql = "update employee set emp_name=?, emp_salary=?, emp_active=?, grd_no=? where emp_no=?";
 			ps = con.prepareStatement(sql);
 			ps.setObject(1,employee.get("emp_name"));
 			ps.setObject(2,employee.get("emp_salary"));
 			ps.setObject(3,employee.get("emp_active"));
 			ps.setObject(4,employee.get("grd_no"));
-			ps.setObject(5,employee.get("emp_credat"));
-			ps.setObject(6,employee.get("emp_no"));
+			ps.setObject(5,employee.get("emp_no"));
 			result = ps.executeUpdate();
 			con.commit();
 		}catch(SQLException e) {

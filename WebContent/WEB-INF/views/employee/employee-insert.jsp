@@ -22,7 +22,7 @@
 			<th><input type="text" name="grd_no" ></th>
 		</tr>
 		<tr>
-			<th colspan="2"><button>직급추가</button><button type="reset">초기화</button></th>
+			<th colspan="2"><button>사원추가</button><button type="reset">초기화</button></th>
 		</tr>
 	</table>
 </form>
