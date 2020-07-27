@@ -24,7 +24,7 @@
 			<td>${employee.emp_no}</td>
 			<td>${employee.emp_name}</td>
 			<td>${employee.emp_credat}</td>
-			<td>${employee.grd_no}</td>
+			<td>${employee.grd_name}</td>
 		</tr>
 	</c:forEach>
 </table>

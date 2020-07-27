@@ -22,7 +22,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		try {
 			con = Conn.open();
 			String sql = "insert into employee (emp_no, emp_name, emp_credat, emp_salary, grd_no)";
-			sql += " values(seq_employee_emp_no.nextval, ?,sysdate,?,?)";
+			sql += " values(seq_emp_no.nextval, ?,sysdate,?,?)";
 			ps = con.prepareStatement(sql);
 			ps.setObject(1,employee.get("emp_name"));
 			ps.setObject(2,employee.get("emp_salary"));
