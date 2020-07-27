@@ -9,7 +9,7 @@
 <body>
 <table border="1">
 	<tr>
-		<th>서원번호</th>
+		<th>사원번호</th>
 		<th>이름</th>
 		<th>입사일</th>
 		<th>직급</th>	
