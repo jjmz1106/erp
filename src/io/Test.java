@@ -17,19 +17,19 @@ import java.util.Map;
 
 import com.erp.test.common.Conn;
 
-public class FolderTest {
+public class Test {
 
 	public static void main(String[] args) {
-		File path = new File("C:\\java_study\\address");
+		File f = new File("C:\\java_study\\address\\build_sejong.txt");
 		String keyStr = "DONG_CODE\r\n" + "SIDO\r\n" + "GUGUN\r\n" + "DONG_NAME\r\n" + "LEE_NAME\r\n" + "IS_MNT\r\n"
 				+ "JIBUN\r\n" + "SUB_JIBUN\r\n" + "ROAD_CODE\r\n" + "ROAD_NAME\r\n" + "IS_BASE\r\n" + "BUILD_NUM\r\n"
 				+ "SUB_BUILD_NUM\r\n" + "BUILDING_NAME\r\n" + "DETAIL_BUILDING_NAME\r\n" + "ADDR_CODE";
 		String keys[] = keyStr.split("\r\n");
-		
+
 		try {
-			System.out.println("시작");
-			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path), "MS949"));
-			List<Map<String,String>> list = new ArrayList<>();
+			System.out.println("프로그램 시작");
+			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f), "MS949"));
+			List<Map<String, String>> list = new ArrayList<>();
 			String str;
 			while ((str = br.readLine()) != null) {
 				String[] values = str.split("\\|");
@@ -60,7 +60,7 @@ public class FolderTest {
 			con.commit();
 			long eTime = System.currentTimeMillis();
 			System.out.println(eTime-sTime);
-		} catch (FileNotFoundException e) {			
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -68,15 +68,6 @@ public class FolderTest {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-	
-		if(path.isDirectory()) {
-			File[] files = path.listFiles();
-			for(File file:files) {
-				if(file.isDirectory() && file.getName().indexOf("build_")==0) {
-					System.out.println(file.getName());
-				}
-			}
 		}
 	}
 }
