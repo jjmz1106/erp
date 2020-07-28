@@ -56,7 +56,10 @@ public class ReadText {
 		return list;
 	}
 	public static void main(String[] args) {
-		String str = readText("c:\\read.txt");
+		String str = readText("C:\\\\java_study\\\\address");
 		
+	}
+	public static String f(String string) {
+		return null;
 	}
 }
