@@ -50,11 +50,21 @@ public class AddressTest2 {
 			sql += value;
 			Connection con = Conn.open();
 			PreparedStatement ps = con.prepareStatement(sql);
+			int cnt=1;
 			for(Map<String,String> row:list) {
 				for(int i=0;i<keys.length;i++) {
 					ps.setString((i+1), row.get(keys[i]));
 				}
-				ps.executeUpdate();
+				ps.addBatch();
+				if(cnt%1000==0) {
+					ps.executeBatch();
+					ps.clearBatch();
+				}
+				cnt++;
+			}
+			if(list.size()%1000!=0) {
+				ps.executeBatch();
+				ps.clearBatch();
 			}
 			con.commit();
 			long eTime = System.currentTimeMillis();
@@ -72,7 +82,9 @@ public class AddressTest2 {
 		return 0;
 	}
 	public static void main(String[] args) {
-		
+		File f = new File("C:\\java_study\\address\\build_sejong.txt");
+		AddressTest2 at = new AddressTest2();
+		at.insertAddress(f);
 	}
 }
 
