@@ -29,8 +29,8 @@
 	</c:forEach>
 </select>
 <script>
-function changeSido(){
-	alert(obj.value);
+function changeSido(obj){
+	location.href='/test?sido=' + obj.value;
 }
 </script>
 </body>
