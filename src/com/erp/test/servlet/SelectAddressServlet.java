@@ -14,25 +14,25 @@ import com.erp.test.service.impl.SelectAddressServiceImpl;
 
 public class SelectAddressServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private SelectAddressService saService = new SelectAddressServiceImpl();
-   
+	private SelectAddressService saService = new SelectAddressServiceImpl();
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sido = request.getParameter("sido");
 		List<String> sidoList = saService.selectSidoList(null);
 		request.setAttribute("sidoList", sidoList);
 		if(sido!=null) {
-			List<String> guguList = saService.selectGugunList(sido);
-			request.setAttribute("guguList", guguList);
+			List<String> gugunList = saService.selectGugunList(sido);
+			request.setAttribute("gugunList", gugunList);
 			String gugun = request.getParameter("gugun");
 			if(gugun!=null) {
-				List<String> dongList = saService.selectDongList(sido,gugun);
+				List<String> dongList = saService.selectDongList(sido, gugun);
 				request.setAttribute("dongList", dongList);
 			}
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("/views/test");
+		RequestDispatcher rd = request.getRequestDispatcher("/views/div");
 		rd.forward(request, response);
 	}
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

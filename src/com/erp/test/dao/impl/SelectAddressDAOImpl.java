@@ -20,12 +20,15 @@ public class SelectAddressDAOImpl implements SelectAddressDAO {
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
+			while(rs.next()){
 				sidoList.add(rs.getString("sido"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			Conn.close(con);
 		}
+		
 		return sidoList;
 	}
 
@@ -33,18 +36,21 @@ public class SelectAddressDAOImpl implements SelectAddressDAO {
 	public List<String> selectGugunList(String sido) {
 		List<String> gugunList = new ArrayList<>();
 		Connection con = Conn.open();
-		String sql = "select distinct gugun from select_address";
-		sql += "where sido=? order by gugun";
+		String sql = "select distinct gugun from select_address ";
+		sql += " where sido=?  order by gugun";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, sido);
 			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
+			while(rs.next()){
 				gugunList.add(rs.getString("gugun"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			Conn.close(con);
 		}
+		
 		return gugunList;
 	}
 
@@ -52,19 +58,22 @@ public class SelectAddressDAOImpl implements SelectAddressDAO {
 	public List<String> selectDongList(String sido, String gugun) {
 		List<String> dongList = new ArrayList<>();
 		Connection con = Conn.open();
-		String sql = "select distinct dong from select_address";
-		sql += "where sido=?, gugun=? order by dong";
+		String sql = "select distinct dong_name from select_address ";
+		sql += " where sido=? and gugun=? order by dong_name";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, sido);
 			ps.setString(2, gugun);
 			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
-				dongList.add(rs.getString("dong"));
+			while(rs.next()){
+				dongList.add(rs.getString("dong_name"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}		
+		}finally {
+			Conn.close(con);
+		}
+		
 		return dongList;
 	}
 	public static void main(String[] args) {
