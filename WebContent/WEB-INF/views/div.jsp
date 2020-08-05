@@ -57,6 +57,8 @@ dong : ${dongList}<br>
 function clickSido(sidoObj){
 	var sido = sidoObj.getAttribute('data-value');
 	location.href='/test?sido=' + sido;
+	
+	var obj = document.querySelector('div.selected[name]')
 }
 </script>
 </body>

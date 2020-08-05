@@ -8,10 +8,15 @@
 <script>
 function gugudan(){
 	var max = document.querySelector('#dan').value;
-	var str = "<table border=\"1\">;
+	var str = "<table border=\"1\">\r\n";
 	for(var i=1;i<=9;i++){
-		
+		str += "<tr>";
+		for(var j=1;j<=max;j++){
+			str += "<td>" + j + " X " + i + " = " + (j*i) + "</td>";
+		}
+		str += "</tr>";
 	}
+	str += "</table>";
 	document.querySelector('#rDiv').innerHTML = str;
 }
 </script>

@@ -6,6 +6,10 @@
 </head>
 <body>
 <script>
+var str = '369369369369369333366669999';
+str = str.replace()
+alert(str);
+
 function three(){
 	var max = document.querySelector('#maxNum').value;
 	var str = "<table border=\"1\">";
@@ -14,12 +18,12 @@ function three(){
 			str += '<tr>';
 		}
 		var numStr = i+'';
-		if(numStr.indexdf('3')!=-1 || numStr.indexdf('6')!=-1 || numStr.indexdf('9')!=-1){
+		if(numStr.indexOf('3')!=-1 || numStr.indexOf('6')!=-1 || numStr.indexOf('9')!=-1){
 			numStr = '짝';
-		str +='<td>' + i + '</td>';
 		}
+		str += '<td>' + numStr + '</td>';
 		if(i%10==0){
-			str += '</tr>'; 
+			str += '</tr>';
 		}
 	}
 	str += "</table>";
