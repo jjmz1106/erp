@@ -11,7 +11,9 @@
 <input type="password" id="input1">
 <button onclick="alert(pwd)">난 니가 뭘 썼는지 앎</button>
 <script>
-
+$('#input1').keyup(function(){
+	$('#d1').text(this.value);
+});
 </script>
 </body>
 </html>
