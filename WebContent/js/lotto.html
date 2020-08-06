@@ -6,23 +6,17 @@
 </head>
 <body>
 <script>
-function lottoNum () {
-	let lotto = [];
-	for(var i=0; i<6; i++) {
-	let n = Math.floor(Math.random() * 45) + 1;
-	console.log(sameNum(n))
-	if (! sameNum(n)) {
-	lotto.push(n);
-	} else {
-	i--;
+var lottos = [];
+for(var i=0;i<6;i++){
+	var lotto = Math.floor(Math.random()*45)+1;
+	if(lottos.indexOf(lotto)!=-1){
+		i--;
+		continue;
 	}
-	}
-	function sameNum (n) {
-	return lotto.find((e) => (e === n));
-	}
-	return lotto;
-	}
-  document.write(lotto+",");
+	lottos.push(lotto);
+}
+lottos.sort();
+document.write(lottos);
 </script>
 </body>
 </html>

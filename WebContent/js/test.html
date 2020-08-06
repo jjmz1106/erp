@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+td{
+	text-align:center;
+	cursor:pointer;
+	width:40px;
+	height:40px;
+}
+td:hover{
+	background-color:black;
+	color:white;
+	font-weight:bold;
+}
+</style>
+</head>
+<body>
+<table border="1">
+	<tr>
+		<td id="td0">1</td>
+		<td id="td1">2</td>
+	</tr>
+	<tr>
+		<td id="td2">3</td>
+		<td id="td3">4</td>
+	</tr>
+</table>
+<script>
+for(var i=0;i<4;i++){
+	document.querySelector('#td'+i).onclick = function(){
+		alert(this.innerText);
+	}
+}
+
+$('td[id]').click(function(){
+	alert(this.innerText);
+})
+</script>
+</body>
+</html>
